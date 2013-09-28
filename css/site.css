@@ -1,0 +1,144 @@
+body { 
+    width:70%;
+    margin:0 auto; 
+    font-family:sans-serif;
+}
+ 
+h1 {
+   font-size: 140%;
+   color: #000077;
+   text-align: center;
+}
+ 
+h2 {
+   color: #000;
+   background-color: #cef;
+   margin: 0 auto;
+   padding: 4px 0;
+}
+
+a {
+    padding: 2px;
+}
+ 
+#header {
+	background-color: #cef;
+	padding: 8px;
+}
+ 
+#header .logo {
+    text-align: right;
+	margin: 0 auto;
+    width: 50;
+    height: 25;
+}
+ 
+#header .strapline {
+	display: block;
+	text-align: right;
+    font-size: 80%;
+    font-style: italic;
+}
+
+#header .hlink {
+    margin-top: 100px;
+    text-align: right;
+}
+ 
+#body {
+    padding: 0 10px;
+    text-align: center;
+}
+
+#content {
+    font-size: medium;
+    width: 60%;
+    margin: 0 auto;
+}
+
+#footer {
+    padding: 8px;
+    text-align: right;
+    font-style: italic;
+    font-size: small;
+    background: #cef;
+}
+ 
+p.new-game {
+	   color: #999;
+}
+ 
+#error {
+    color:#500;
+    background-color:#f55;
+    border:1px solid #500;
+    padding:8px;
+}
+ 
+.message {
+	 background-color: #ff8;
+	 padding: 8px;
+	 margin-bottom: 8px;
+}
+ 
+form {
+     text-align: left;
+}
+ 
+input {
+      font-size: 150%; 
+}
+ 
+input, textarea {
+       margin: 10px;
+       padding: 6px;
+       box-shadow: rgba(0,0,0, 0.2) 0px 0px 8px;
+       -moz-box-shadow: rgba(0,0,0, 0.2) 0px 0px 8px;
+       -webkit-box-shadow: rgba(0,0,0, 0.2) 0px 0px 8px;
+}
+ 
+input.txt {
+	  border: 1px solid #ccc;
+}
+ 
+#chart table {
+       width: 100%;
+}
+ 
+#chart td {
+       padding: 8px;
+       height: 30px;
+}
+ 
+#chart td.game {
+       width: 80%;
+}
+ 
+#chart td.vote {
+       width: 50px;
+       vertical-align: middle;
+}
+ 
+#chart .votes, #chart .game {
+       font-size: 20px;
+}
+ 
+a.vote {
+       text-decoration: none;
+       font-size: 80%;
+       color: #888;
+}
+ 
+.vote:hover {
+	    color: #33f;
+	    font-size: 100%;
+}
+ 
+input.btn {  
+    width: auto;  
+    padding: 9px 15px;  
+    background: #aaa;  
+    border: 0;  
+    font-size: 14px;  
+    color: #fff;
+}
