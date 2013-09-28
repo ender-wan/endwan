@@ -31,7 +31,7 @@
                    (:span :class "strapline"
                           "This is Ender's new home")
                    (:a :href "/index" "home")
-                   (:a :href "/blog" "blog")
+                   (:a :href "/articles" "articles")
                    (:a :href "/about" "about me"))
              ,@body)
             (:div :id "footer"
@@ -43,9 +43,9 @@
     (:div :id "content"
           (:p "My first website!"))))
 
-(defun my-blog ()
-  (standard-page (:title "Ender's Blog")
-    (:h1 "Ender's Blog")
+(defun articles ()
+  (standard-page (:title "articles")
+    (:h1 "All Articles")
     (:div :id "content"
           (:p "Coming soon..."))))
 
@@ -58,7 +58,7 @@
 (setf *dispatch-table*
       (list
        (create-prefix-dispatcher "/index" 'index-page)
-       (create-prefix-dispatcher "/blog" 'my-blog)
+       (create-prefix-dispatcher "/articles" 'articles)
        (create-prefix-dispatcher "/about" 'about-me)
        (create-static-file-dispatcher-and-handler "/logo.jpg" "imgs/logo.jpg")
        (create-static-file-dispatcher-and-handler "/site.css" "css/site.css")))
