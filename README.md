@@ -1,4 +1,4 @@
 endwan
 ======
 
-This is a website create by Clozure Lisp.
+This is a website created by Clozure Lisp.
