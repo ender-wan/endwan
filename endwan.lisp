@@ -1,13 +1,9 @@
-(in-package :cl-user)
-
-(ql:quickload '(cl-who hunchentoot parenscript))
-
-(defpackage :com.endwan.www
-  (:use :cl :cl-who :hunchentoot :parenscript))
-
 (in-package :com.endwan.www)
 
 (defvar *web-server* (start (make-instance 'easy-acceptor :port 8080)))
+
+(defvar static-files (list (create-static-file-dispatcher-and-handler "/logo.jpg" "imgs/logo.jpg")
+                           (create-static-file-dispatcher-and-handler "/site.css" "css/site.css")))
 
 (defmacro standard-page ((&key title) &body body)
   `(with-html-output-to-string (*standard-output* nil :prologue t :indent t)
@@ -23,11 +19,6 @@
                     :href "site.css"))
             (:body
              (:div :id "header"
-                   (:img :src "/logo.jpg"
-                         :alt "Commodore 64"
-                         :width "100"
-                         :height "50"
-                         :class "logo")
                    (:span :class "strapline"
                           "This is Ender's new home")
                    (:a :href "/index" "home")
@@ -35,7 +26,11 @@
                    (:a :href "/about" "about me"))
              ,@body)
             (:div :id "footer"
-                  "Created by Common Lisp :)"))))
+                  (:img :src "/logo.jpg"
+                        :alt "Commodore 64"
+                        :width "90"
+                        :height "30"
+                        :class "logo")))))
 
 (defun index-page ()
   (standard-page (:title "home")
@@ -56,9 +51,9 @@
           (:p "I'm a C++ and Lisp programmer!"))))
 
 (setf *dispatch-table*
-      (list
-       (create-prefix-dispatcher "/index" 'index-page)
-       (create-prefix-dispatcher "/articles" 'articles)
-       (create-prefix-dispatcher "/about" 'about-me)
-       (create-static-file-dispatcher-and-handler "/logo.jpg" "imgs/logo.jpg")
-       (create-static-file-dispatcher-and-handler "/site.css" "css/site.css")))
+      (append
+             static-files
+             (list
+              (create-prefix-dispatcher "/index" 'index-page)
+              (create-prefix-dispatcher "/articles" 'articles)
+              (create-prefix-dispatcher "/about" 'about-me))))

@@ -1,1 +1,5 @@
 *.dx64fsl
+*.lx64fsl
+*.db
+db/
+#*#
