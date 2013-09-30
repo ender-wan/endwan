@@ -33,13 +33,18 @@
                            (body (varchar 1024*1024))
                            (timestamp datatime)))))
 
-(defmethod write-to-db ((a-post post))
+(defmethod write-post-list-to-db (post-list)
+  (loop for p in post-list
+       do
+       (write-to-db p)))
+
+(defmethod write-post-to-db ((a-post post))
   (with-slots (user subject body timestamp) a-post
     (clsql:insert-records :into table-posts-name :attributes '(user subject body timestamp)
                           :values (list user subject body timestamp))))
 
-(defmethod make-post-list ()
-  (let* ((instance-list ()))
+(defmethod make-post-instance-list ()
+  (let ((instance-list ()))
     (multiple-value-bind (records key-list) (clsql:select '* :from table-posts-name)
       (if (> (list-length records) 0)
           (loop for r in records
@@ -54,7 +59,7 @@
        for k in key-list
        for v in value-list
        do
-         (if (string= k "timestamp")
+         (if (equalp k "timestamp")
              (setf v (parse-integer v))
              nil)
          (push v key-value-list)
