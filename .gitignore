@@ -2,4 +2,6 @@
 *.lx64fsl
 *.db
 db/
-#*#
+\#*\#
+.#*
+.DS_Store
